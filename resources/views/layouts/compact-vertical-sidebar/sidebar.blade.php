@@ -1,14 +1,6 @@
 <div class="side-content-wrap">
     <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
         <ul class="navigation-left">
-            <li class="nav-item {{ request()->is('admin/*') ? 'active' : '' }} {{ request()->is('large-compact-sidebar/dashboard/*') ? 'active' : '' }}"
-                data-item="admin">
-                <a class="nav-item-hold" href="#">
-                    <i class="nav-icon i-Administrator"></i>
-                    <span class="nav-text">Admin</span>
-                </a>
-                <div class="triangle"></div>
-            </li>
             <li class="nav-item {{ request()->is('dashboard/*') ? 'active' : '' }} {{ request()->is('large-compact-sidebar/dashboard/*') ? 'active' : '' }}"
                 data-item="dashboard">
                 <a class="nav-item-hold" href="#">
@@ -17,6 +9,15 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            <li class="nav-item {{ request()->is('admin/*') ? 'active' : '' }} {{ request()->is('large-compact-sidebar/dashboard/*') ? 'active' : '' }}"
+                data-item="admin">
+                <a class="nav-item-hold" href="#">
+                    <i class="nav-icon i-Administrator"></i>
+                    <span class="nav-text">Admin</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+           
         </ul>
     </div>
 
@@ -27,7 +28,37 @@
                 <img src="{{asset('assets/images/logo-text.png')}}" alt="">
             </div>
         </header>
-        <!-- Submenu Dashboards -->
+         <!-- Submenu Dashboards -->
+         <div class="submenu-area" data-parent="dashboard">
+            <header>
+                <h6>Dashboard</h6>
+            </header>
+            <ul class="childNav" data-parent="dashboard">
+                <li class="nav-item ">
+                    <a class="{{ Route::currentRouteName()=='dashboard' ? 'open' : '' }}"
+                        href="{{route('dashboard')}}">
+                        <i class="nav-icon i-Clock-3"></i>
+                        <span class="item-name">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('tracks.index')}}"
+                        class="{{ Route::currentRouteName()=='tracks.index' ? 'open' : '' }}">
+                        <i class="nav-icon i-Administrator"></i>
+                        <span class="item-name">All Tracks</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('courses.index')}}"
+                        class="{{ Route::currentRouteName()=='courses.index' ? 'open' : '' }}">
+                        <i class="nav-icon i-Administrator"></i>
+                        <span class="item-name">All Courses</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+         <!--------------------------->
+         <!-- Submenu Admins -->
         <div class="submenu-area" data-parent="admin">
             <header>
                 <h6>Admin</h6>
@@ -56,23 +87,7 @@
                 </li>
             </ul>
         </div>
-        <!--------------------------->
-        
-        <div class="submenu-area" data-parent="dashboard">
-            <header>
-                <h6>Dashboard</h6>
-            </header>
-            <ul class="childNav" data-parent="dashboard">
-                <li class="nav-item ">
-                    <a class="{{ Route::currentRouteName()=='dashboard' ? 'open' : '' }}"
-                        href="{{route('dashboard')}}">
-                        <i class="nav-icon i-Clock-3"></i>
-                        <span class="item-name">Dashboard</span>
-                    </a>
-                </li>
-                
-            </ul>
-        </div>
+         <!--------------------------->
        
     </div>
     <div class="sidebar-overlay"></div>

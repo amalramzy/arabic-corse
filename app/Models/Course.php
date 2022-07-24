@@ -12,6 +12,7 @@ class Course extends Model
         'title',
         'status',
         'link',
+        'track_id'
         
     ];
 
