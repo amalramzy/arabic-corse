@@ -1,0 +1,1 @@
+<img src="{{$admin->image}}" width="100px" height="100px">
