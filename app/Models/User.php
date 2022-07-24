@@ -17,8 +17,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','score'
     ];
+
+    public function photo(){
+        return $this->morphOne('App\Models\Photo', 'photoable');
+    }
+
+    public function tracks(){
+        return $this->belongsToMany('App\Models\Track');
+    }
+
+    public function courses(){
+        return $this->belongsToMany('App\Models\Coures');
+    }
+
+    public function quizzes(){
+        return $this->belongsToMany('App\Models\Quiz');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
