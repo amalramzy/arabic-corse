@@ -46,7 +46,8 @@ class TracksDataTable extends DataTable
                     ->setTableId('tracks-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
+                    ->ajax('')
+                    ->dom('frtip')
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),

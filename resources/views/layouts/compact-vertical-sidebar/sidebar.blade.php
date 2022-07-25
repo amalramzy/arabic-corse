@@ -1,19 +1,19 @@
 <div class="side-content-wrap">
     <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
         <ul class="navigation-left">
-            <li class="nav-item {{ request()->is('dashboard/*') ? 'active' : '' }} {{ request()->is('large-compact-sidebar/dashboard/*') ? 'active' : '' }}"
+            {{-- <li class="nav-item {{ request()->is('dashboard/*') ? 'active' : '' }} {{ request()->is('large-compact-sidebar/dashboard/*') ? 'active' : '' }}"
                 data-item="dashboard">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Bar-Chart"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
                 <div class="triangle"></div>
-            </li>
+            </li> --}}
             <li class="nav-item {{ request()->is('admin/*') ? 'active' : '' }} {{ request()->is('large-compact-sidebar/dashboard/*') ? 'active' : '' }}"
                 data-item="admin">
                 <a class="nav-item-hold" href="#">
-                    <i class="nav-icon i-Administrator"></i>
-                    <span class="nav-text">Admin</span>
+                    <i class="nav-icon i-Bar-Chart"></i>
+                    <span class="nav-text">Dashboard</span>
                 </a>
                 <div class="triangle"></div>
             </li>
@@ -29,9 +29,20 @@
             </div>
         </header>
          <!-- Submenu Dashboards -->
-         <div class="submenu-area" data-parent="dashboard">
+         {{-- <div class="submenu-area" data-parent="dashboard">
             <header>
                 <h6>Dashboard</h6>
+            </header>
+            <ul class="childNav" data-parent="dashboard">
+           
+           
+            </ul>
+        </div> --}}
+         <!--------------------------->
+         <!-- Submenu Admins -->
+        <div class="submenu-area" data-parent="admin">
+            <header>
+                <h6>Admin</h6>
             </header>
             <ul class="childNav" data-parent="dashboard">
                 <li class="nav-item ">
@@ -39,6 +50,20 @@
                         href="{{route('dashboard')}}">
                         <i class="nav-icon i-Clock-3"></i>
                         <span class="item-name">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admins.index')}}"
+                        class="{{ Route::currentRouteName()=='admins.index' ? 'open' : '' }}">
+                        <i class="nav-icon i-Administrator"></i>
+                        <span class="item-name">All Admin</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('users.index')}}"
+                        class="{{ Route::currentRouteName()=='users.index' ? 'open' : '' }}">
+                        <i class="nav-icon i-Administrator"></i>
+                        <span class="item-name">All Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -53,29 +78,6 @@
                         class="{{ Route::currentRouteName()=='courses.index' ? 'open' : '' }}">
                         <i class="nav-icon i-Administrator"></i>
                         <span class="item-name">All Courses</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-         <!--------------------------->
-         <!-- Submenu Admins -->
-        <div class="submenu-area" data-parent="admin">
-            <header>
-                <h6>Admin</h6>
-            </header>
-            <ul class="childNav" data-parent="dashboard">
-                <li class="nav-item">
-                    <a href="{{route('admins.index')}}"
-                        class="{{ Route::currentRouteName()=='admins.index' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
-                        <span class="item-name">All Admin</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('users.index')}}"
-                        class="{{ Route::currentRouteName()=='users.index' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
-                        <span class="item-name">All Users</span>
                     </a>
                 </li>
                 <li class="nav-item" >

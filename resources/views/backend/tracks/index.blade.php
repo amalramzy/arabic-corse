@@ -11,6 +11,28 @@
     {{Session::get('message')}}
 </div>
 @endif
+<div class="card-body">
+    
+    <form method="POST" action="{{ route('tracks.store') }}">
+        @csrf
+        <div class="form-group" for="name">{{ __('Create Track') }}</div>
+
+        <div class="row">
+            <div class="form-group col-6">
+                <input type="text" name="name" id="name" class="form-control form-control-alternative @error('name') is-invalid @enderror" placeholder="{{ __('Add Name') }}" value="{{old('name')}}">
+                
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="form-group col-6">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
     {{$dataTable->table()}}
 
 
