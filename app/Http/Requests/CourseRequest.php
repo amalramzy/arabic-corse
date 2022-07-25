@@ -13,7 +13,7 @@ class CourseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,10 +25,10 @@ class CourseRequest extends FormRequest
     {
         return [
             'title' => [
-                'required', 'string', 'min:50'
+                'required', 'string', 'min:5'
             ],
             'status' => [
-                'required','number'
+                'required'
             ],
             'link' => [
                 'required', 'url'

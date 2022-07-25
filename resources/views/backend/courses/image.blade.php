@@ -1,0 +1,1 @@
+<img  @if($course->image == "" )src="{{asset('/images/download.png')}}" @endif src="{{$course->image}}" width="100px" height="100px">

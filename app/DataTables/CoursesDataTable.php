@@ -22,11 +22,10 @@ class CoursesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'backend.courses.action');
-            // ->addColumn('track',function($track){
-            //     $name = $track->id;
-            //     return $name;
-            //    });
+            ->addColumn('action', 'backend.courses.action')
+            ->addColumn('image', function($course){
+                return view('backend.courses.image', compact('course'));
+                });
 
     }
 
@@ -77,6 +76,7 @@ class CoursesDataTable extends DataTable
             Column::make('title'),
             Column::make('status'),
             Column::make('link'),
+            Column::computed('image'),
             Column::computed('action')
             // Column::computed('track')
                   ->exportable(false)

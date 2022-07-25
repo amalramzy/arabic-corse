@@ -12,6 +12,13 @@
 </div>
 @endif
 
+<div>
+    <a class="btn btn-icon btn-primary btn-create" href="{{route('courses.create')}}">
+        <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+        <span class="btn-inner--text">Add Course</span>
+    </a>
+</div>
+
     {{$dataTable->table()}}
 
 

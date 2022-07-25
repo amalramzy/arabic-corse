@@ -21,7 +21,10 @@ class AllCoursesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'backend.courses.action');
+            ->addColumn('action', 'backend.courses.action')
+            ->addColumn('image', function($course){
+                return view('backend.courses.image', compact('course'));
+                });
     }
 
     /**
@@ -70,6 +73,7 @@ class AllCoursesDataTable extends DataTable
             Column::make('title'),
             Column::make('status'),
             Column::make('link'),
+            Column::computed('image'),
             Column::computed('action')
             // Column::computed('track')
                   ->exportable(false)

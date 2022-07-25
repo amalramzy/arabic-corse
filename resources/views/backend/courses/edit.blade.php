@@ -39,15 +39,18 @@
                                         </span>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-3">
-                                        <label class="form-control-label" for="status">{{ __('Status') }}</label>
-                                        <input type="checkbox" name="status" id="status" class="form-control form-control-alternative @error('status') is-invalid @enderror" value="1">
+                                    <div class="form-group col-6">
+                                        <label class="form-control-label" for="input-status">{{ __('Status') }}</label>
+                                        <select name="status"  class="form-control parent form-control-alternative @error('status') is-invalid @enderror" @if($course->status == "1" )selected @endif id="status">
+                                            <option value="0">Free</option>
+                                            <option value="1">Paid</option>
+                                        </select>
     
-                                        @if ($errors->has('status'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @endif
+                                        @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
 
                                     <div class="col-md-12">

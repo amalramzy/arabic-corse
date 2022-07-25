@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-class Course extends Model
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+class Course extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory,InteractsWithMedia;
+    protected $appends = ['image'];
     protected $fillable = [
         'title',
         'status',
@@ -15,6 +17,11 @@ class Course extends Model
         'track_id'
         
     ];
+
+    public function getImageAttribute(){
+        $url = $this->getFirstMediaUrl('image');
+        return $url == "" ? null : $url;
+    }
 
     public function photo(){
         return $this->morphOne('App\Models\Photo', 'photoable');
