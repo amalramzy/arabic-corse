@@ -25,7 +25,10 @@ class CoursesDataTable extends DataTable
             ->addColumn('action', 'backend.courses.action')
             ->addColumn('image', function($course){
                 return view('backend.courses.image', compact('course'));
-                });
+                })
+            ->addColumn('link', function($course){
+                return view('backend.courses.link', compact('course'));
+                });    
 
     }
 
@@ -75,7 +78,7 @@ class CoursesDataTable extends DataTable
             Column::make('id'),
             Column::make('title'),
             Column::make('status'),
-            Column::make('link'),
+            Column::computed('link'),
             Column::computed('image'),
             Column::computed('action')
             // Column::computed('track')

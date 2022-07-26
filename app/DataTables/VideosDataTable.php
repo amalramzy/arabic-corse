@@ -2,14 +2,14 @@
 
 namespace App\DataTables;
 
-use App\Models\AllCourse;
+use App\Models\Video;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use App\Models\Course;
-class AllCoursesDataTable extends DataTable
+
+class VideosDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,22 +21,22 @@ class AllCoursesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'backend.courses.action')
-            ->addColumn('image', function($course){
-                return view('backend.courses.image', compact('course'));
+            ->addColumn('action', 'backend.videos.action')
+            ->addColumn('link', function($video){
+                return view('backend.videos.link', compact('video'));
                 })
-            ->addColumn('link', function($course){
-                return view('backend.courses.link', compact('course'));
+            ->addColumn('course name', function($video){
+                return view('backend.videos.course', compact('video'));
                 }); 
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\AllCourse $model
+     * @param \App\Models\Video $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Course $model)
+    public function query(Video $model)
     {
         return $model->newQuery();
     }
@@ -49,7 +49,7 @@ class AllCoursesDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('allcourses-table')
+                    ->setTableId('videos-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->ajax('')
@@ -74,16 +74,14 @@ class AllCoursesDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('title'),
-            Column::make('status'),
             Column::computed('link'),
-            Column::computed('image'),
+            Column::computed('course name'),
             Column::computed('action')
-            // Column::computed('track')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            
+          
         ];
     }
 
@@ -94,6 +92,6 @@ class AllCoursesDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'AllCourses_' . date('YmdHis');
+        return 'Videos_' . date('YmdHis');
     }
 }

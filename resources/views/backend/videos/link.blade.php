@@ -1,0 +1,1 @@
+<a href="{{$video->link}}">{{$video->link}}</a>

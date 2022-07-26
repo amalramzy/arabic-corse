@@ -80,6 +80,13 @@
                         <span class="item-name">All Courses</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('videos.index')}}"
+                        class="{{ Route::currentRouteName()=='videos.index' ? 'open' : '' }}">
+                        <i class="nav-icon i-Administrator"></i>
+                        <span class="item-name">All Videos</span>
+                    </a>
+                </li>
                 <li class="nav-item" >
                        <a href="{{route('import-view')}}"
                         class="{{ Route::currentRouteName()=='import-view' ? 'open' : '' }}">

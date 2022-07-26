@@ -1,0 +1,1 @@
+<a href="{{$course->link}}">{{$course->link}}</a>
