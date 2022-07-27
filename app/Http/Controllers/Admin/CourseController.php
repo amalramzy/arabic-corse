@@ -59,9 +59,9 @@ class CourseController extends Controller
         return redirect(route('index.courses',$track->id))->with('message', 'Course has been Created Succesfuly');
     }
 
-    public function show($id)
+    public function show(Course $course)
     {
-        //
+        return view('backend.courses.show', compact('course'));
     }
 
     public function editCourse($id, $track_id)

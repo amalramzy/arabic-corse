@@ -1,1 +1,1 @@
-<a href="#">{{$video->course->title}}</a>
+<a href="#">{{\Str::limit($video->course->title, 20)}}</a>

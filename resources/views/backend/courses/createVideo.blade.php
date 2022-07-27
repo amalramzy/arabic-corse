@@ -13,7 +13,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="card-title mb-3">Create Video</div>
-                            <form method="POST" action="{{ route('videos.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('course.video.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                 
@@ -37,16 +37,6 @@
                                     </span>
                                     @enderror
                                 </div>
-                              
-                                 
-                                <div class="form-group col-6">
-                                    <label class="form-control-label" for="input-parent_id">{{ __('Course') }}</label>
-                                    <select name="course_id"  class="form-control parent" id="course">
-                                        @foreach (\App\Models\Course::all() as $course)
-                                         <option value="{{$course->id}}">{{\Str::limit($course->title, 20)}}</option>
-                                        @endforeach
-                                    </select>
-                               </div>
                             
                                     <div class="col-md-12">
                                          <button class="btn btn-primary">Submit</button>

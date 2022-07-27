@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\VideosDataTable;
+use App\DataTables\QuizzesDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Video;
+use App\Models\Quiz;
 
-class VideoController extends Controller
+class QuizController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(VideosDataTable $dataTable)
+    public function index(QuizzesDataTable $dataTable)
     {
-        return $dataTable->render('backend.videos.index');
-
+        return $dataTable->render('backend.quizzes.index'); 
     }
 
     /**
@@ -27,7 +26,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-         return view('backend.videos.create');
+        return view('backend.quizzes.create');
     }
 
     /**
@@ -38,9 +37,9 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        $video=new Video($request->all());
-        $video->save();
-        return redirect(route('videos.index'))->with('message', 'Video has been Created Succesfuly');
+        $quiz=new Quiz($request->all());
+        $quiz->save();
+        return redirect(route('quizzes.index'))->with('message', 'Quiz has been Created Succesfuly');
     }
 
     /**
@@ -49,10 +48,9 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Video $video)
+    public function show(Quiz $quiz)
     {
-        return view('backend.videos.show', compact('video'));
-
+        return view('backend.quizzes.show', compact('quiz'));
     }
 
     /**
@@ -63,8 +61,8 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        $video = Video::findOrFail($id);
-        return view('backend.videos.edit',compact(['video']));
+        $quiz = Quiz::findOrFail($id);
+        return view('backend.quizzes.edit',compact(['quiz']));
     }
 
     /**
@@ -76,10 +74,10 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $video = Video::findOrFail($id);
-        $video->update($request->all());
+        $quiz = Quiz::findOrFail($id);
+        $quiz->update($request->all());
        
-        return redirect(route('videos.index'))->with('message', 'Video has been Updated Succesfuly');
+        return redirect(route('quizzes.index'))->with('message', 'Quiz has been Updated Succesfuly');
     }
 
     /**
@@ -90,7 +88,7 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        video::findOrFail($id)->delete();
-        return redirect()->route('videos.index')->with('message', 'Video has been Deleted Succesfuly');
+        Quiz::findOrFail($id)->delete();
+        return redirect()->route('quizzes.index')->with('message', 'Quiz has been Deleted Succesfuly');
     }
 }

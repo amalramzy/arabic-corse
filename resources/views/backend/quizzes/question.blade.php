@@ -1,0 +1,1 @@
+<a href="#">{{count($quiz->questions)}}</a>

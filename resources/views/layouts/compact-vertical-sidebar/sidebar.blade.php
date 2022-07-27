@@ -87,6 +87,13 @@
                         <span class="item-name">All Videos</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('quizzes.index')}}"
+                        class="{{ Route::currentRouteName()=='quizzes.index' ? 'open' : '' }}">
+                        <i class="nav-icon i-Administrator"></i>
+                        <span class="item-name">All quizzes</span>
+                    </a>
+                </li>
                 <li class="nav-item" >
                        <a href="{{route('import-view')}}"
                         class="{{ Route::currentRouteName()=='import-view' ? 'open' : '' }}">

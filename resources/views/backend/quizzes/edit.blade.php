@@ -12,27 +12,17 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Edit Video</div>
-                            <form method="POST" action="{{ route('videos.update', [$video->id]) }}">
+                            <div class="card-title mb-3">Edit Quiz</div>
+                            <form method="POST" action="{{ route('quizzes.update', [$quiz->id]) }}">
                                 @csrf
                                 {{method_field('PUT')}}
                                 <div class="row">
                                 
                                     <div class="form-group col-6">
-                                        <label class="form-control-label" for="title">{{ __('Title') }}</label>
-                                        <input type="text" name="title" id="title" class="form-control form-control-alternative @error('title') is-invalid @enderror" placeholder="{{ __('Title') }}" value="{{$video->title}}">
+                                        <label class="form-control-label" for="title">{{ __('name') }}</label>
+                                        <input type="text" name="name" id="name" class="form-control form-control-alternative @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" value="{{$quiz->name}}">
                                         
-                                        @error('title')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-6">
-                                        <label class="form-control-label" for="link">{{ __('Link') }}</label>
-                                        <input type="url" name="link" id="link" class="form-control form-control-alternative @error('link') is-invalid @enderror" placeholder="{{ __('Link') }}" value="{{$video->link}}">
-                                        
-                                        @error('link')
+                                        @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -42,7 +32,7 @@
                                         <label class="form-control-label" for="input-parent_id">{{ __('Course') }}</label>
                                         <select name="course_id"  class="form-control parent" id="course">
                                             @foreach (\App\Models\Course::all() as $course)
-                                             <option value="{{$course->id}}" @if($course->id == $video->course_id) selected @endif>{{\Str::limit($course->title, 20)}}</option>
+                                             <option value="{{$course->id}}" @if($course->id == $quiz->course_id) selected @endif>{{\Str::limit($course->title, 20)}}</option>
                                             @endforeach
                                         </select>
                                    </div>

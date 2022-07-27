@@ -1,1 +1,1 @@
-<a href="{{$video->link}}">{{$video->link}}</a>
+<a href="{{route('videos.show', $video)}}">{{$video->link}}</a>

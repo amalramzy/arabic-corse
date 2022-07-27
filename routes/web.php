@@ -39,8 +39,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function () {
     Route::get('/course-create/{id}', [\App\Http\Controllers\Admin\CourseController::class,'createCourse'])->name('create.courses');
     Route::get('/course-edit/{id}/{track_id}', [\App\Http\Controllers\Admin\CourseController::class,'editCourse'])->name('edit.courses');
     Route::put('/course-update/{id}/{track_id}', [\App\Http\Controllers\Admin\CourseController::class,'updateCourse'])->name('update.courses');
+    Route::resource('/course.video', 'App\Http\Controllers\Admin\CourseVideoController');
     //videos
     Route::resource('/videos', 'App\Http\Controllers\Admin\VideoController');
+    //quizzes
+    Route::resource('/quizzes', 'App\Http\Controllers\Admin\QuizController');
+    //questions
+    Route::resource('/questions', 'App\Http\Controllers\Admin\QuestionController');
 
     //export & emport user
     Route::get('/file-import',[App\Http\Controllers\User\UserController::class,'importView'])->name('import-view');

@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\VideosDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Video;
 
-class VideoController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(VideosDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('backend.videos.index');
-
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-         return view('backend.videos.create');
+        //
     }
 
     /**
@@ -38,9 +35,7 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        $video=new Video($request->all());
-        $video->save();
-        return redirect(route('videos.index'))->with('message', 'Video has been Created Succesfuly');
+        //
     }
 
     /**
@@ -49,10 +44,9 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Video $video)
+    public function show($id)
     {
-        return view('backend.videos.show', compact('video'));
-
+        //
     }
 
     /**
@@ -63,8 +57,7 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        $video = Video::findOrFail($id);
-        return view('backend.videos.edit',compact(['video']));
+        //
     }
 
     /**
@@ -76,10 +69,7 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $video = Video::findOrFail($id);
-        $video->update($request->all());
-       
-        return redirect(route('videos.index'))->with('message', 'Video has been Updated Succesfuly');
+        //
     }
 
     /**
@@ -90,7 +80,6 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        video::findOrFail($id)->delete();
-        return redirect()->route('videos.index')->with('message', 'Video has been Deleted Succesfuly');
+        //
     }
 }

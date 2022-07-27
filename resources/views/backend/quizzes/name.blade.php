@@ -1,0 +1,1 @@
+<a href="{{route('quizzes.show', $quiz)}}">{{$quiz->name}}</a>

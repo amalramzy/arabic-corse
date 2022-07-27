@@ -6,7 +6,7 @@
     </button>
     <div class="dropdown-menu" x-placement="bottom-start">
        
-        <form id="delete-form{{$id}}" method="POST" action="{{route('courses.destroy',[$id])}}" >@csrf
+        <form id="delete-form{{$id}}" method="POST" action="{{route('quizzes.destroy',[$id])}}" >@csrf
             {{method_field('DELETE')}}
         </form> 
             <a class="dropdown-item" href="#" onclick="if(confirm('Do you want to delete?')){
@@ -17,8 +17,9 @@
             }
             ">Delete</a>
        
-        <a class="dropdown-item" href="{{route('edit.courses',[$id, $track_id])}}">Edit</a>
-        <a class="dropdown-item" href="{{route('courses.show',[$id])}}">Show</a>
+        <a class="dropdown-item" href="{{route('quizzes.edit',[$id])}}">Edit</a>
+        {{-- <a class="dropdown-item " href="{{route('index.courses',[$id])}}">Courses</a> --}}
+
         {{-- <a class="dropdown-item " href="{{url('admin/admins/upload',[$id])}}">Upload Image</a> --}}
     </div>
 </div>
