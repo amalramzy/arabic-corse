@@ -12,8 +12,8 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="card-title mb-3">Create Video</div>
-                            <form method="POST" action="{{ route('videos.store') }}" enctype="multipart/form-data">
+                            <div class="card-title mb-3">Create Course</div>
+                            <form method="POST" action="{{ route('courses.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                 
@@ -38,16 +38,30 @@
                                     @enderror
                                 </div>
                               
-                                 
-                                <div class="form-group col-6">
-                                    <label class="form-control-label" for="input-parent_id">{{ __('Course') }}</label>
-                                    <select name="course_id"  class="form-control parent" id="course">
+                                    <div class="form-group col-6">
+                                        <label class="form-control-label" for="input-status">{{ __('Status') }}</label>
+                                        <select name="status"  class="form-control parent" id="status">
+                                            <option value="0">Free</option>
+                                            <option value="1">Paid</option>
+                                        </select>
+                                   </div>
+                                   <div class="form-group col-6">
+                                    <label class="form-control-label" for="input-parent_id">{{ __('Tracks') }}</label>
+                                    <select name="track_id"  class="form-control parent" id="tracks">
                                         
-                                         <option value="{{$course->id}}">{{\Str::limit($course->title, 20)}}</option>
+                                        <option value="{{$track->id}}">{{$track->name}}</option>
                                         
+                                
+                                       
                                     </select>
                                </div>
-                            
+                               <div class="form-group col-6">
+                                <label class="form-control-label" for="input-name">{{ __('Image') }}</label>
+                                <input type="file" name="image" id="image" class="form-control form-control-alternative" placeholder="{{ __('Image') }}">
+                               
+                                </div>
+
+
                                     <div class="col-md-12">
                                          <button class="btn btn-primary">Submit</button>
                                     </div>

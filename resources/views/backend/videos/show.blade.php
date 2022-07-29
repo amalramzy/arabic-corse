@@ -10,9 +10,10 @@
     </div>
             <div class="row">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                  </div>
+                  <iframe class="embed-responsive-item" src="{{$video->link}}" allowfullscreen></iframe>
 
+                    {{-- <iframe class="embed-responsive-item" src="{{$video->link}}" allowfullscreen></iframe> --}}
+                  </div>
             </div>
 
 

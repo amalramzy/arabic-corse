@@ -6,10 +6,18 @@
 
 @section('main-content')
    <div class="breadcrumb">
-    <h3 class="card-title">Course name: {{\Str::limit($course->title,20)}}</h3>
-
+    <div class="text-left p-3">
+        <h3>Track name: {{\Str::limit($track->name,20)}}</h3>
+        <a class="btn btn-icon btn-primary btn-create" href="/admin/tracks/{{$track->id}}/courses/create">
+            <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+            <span class="btn-inner--text">Add Course</span>
+        </a>
+    </div>
+    
     </div>
             <div class="row">
+              
+                @foreach($track->courses as $key => $course)
                 <div class="col-sm-4">
                     
                     <div class="card" style="width: 20rem;">
@@ -25,8 +33,10 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="card-body">
+                       
+                            
                         
-                        <p class="card-text">TRACK NAME: {{$course->track->name}}</p>
+                        <p class="card-text">COURSES NAME: {{$course->title}}</p>
                         <h4 class="{{$course->status == '0' ? 'text-primary': 'text-danger'}}">STATUS: {{$course->status == "0" ? "FREE": "PAID"}}</h4>
                         <form id="delete-form{{$course->id}}" method="POST" action="{{route('courses.destroy',[$course->id])}}" >@csrf
                             {{method_field('DELETE')}}
@@ -44,51 +54,14 @@
                             <button class="btn btn-primary">Edit</button>
                         </a>
                       </div>
-                      <hr>
+                      
+                    
                 </div>
-               
-             
+                <hr>
+                @endforeach
             </div>
-            <hr>
-            <h3>courses videos</h3>
-            <div>
-                <a class="btn btn-icon btn-primary btn-create" href="/admin/courses/{{$course->id}}/videos/create">
-                    <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
-                    <span class="btn-inner--text">Add Video</span>
-                </a>
-            </div>
-         <div class="row">
-           
-            @foreach($course->videos as $key => $video)
-            
-            <div class="col-sm-4">
-                
-                <img src="{{asset('images\video.jpg')}}">
-                {{-- <iframe class="embed-responsive-item" src="{{$video->link}}?rel=0" allowfullscreen></iframe> --}}
-                
-               
-            </div>
-            <div class="col-sm-8">
-                <a href="{{route('videos.show', $video)}}"><h5>{{$video->title}}</h5></a>
-                <form id="delete-form{{$video->id}}" method="POST" action="{{route('videos.destroy',[$video->id])}}" >@csrf
-                    {{method_field('DELETE')}}
-                   </form> 
-                    <a href="#" onclick="if(confirm('Do you want to delete?')){
-                        event.preventDefault();
-                        document.getElementById('delete-form{{$video->id}}').submit()
-                    }else{
-                        event.preventDefault();
-                    }
-                    ">
-                    <input type="submit" value="Delete" class="btn btn-danger">
-                </a>
-                <a href="{{route('videos.edit',[$video->id])}}">
-                    <button class="btn btn-primary">Edit</button>
-                </a>
-
-            </div>
-            @endforeach
-         </div>
+        
+        
 
 
 @endsection

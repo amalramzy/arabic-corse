@@ -1,1 +1,1 @@
-<a href="#">{{\Str::limit($quiz->course->title, 20)}}</a>
+<a href="{{route('courses.show',[$quiz->course->id])}}">{{\Str::limit($quiz->course->title, 20)}}</a>

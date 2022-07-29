@@ -21,13 +21,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(10)->create();
-        Track::factory()->count(10)->create();
-        Course::factory()->count(50)->create();
-        Video::factory()->count(50)->create();
-        Photo::factory()->count(50)->create();
-        Quiz::factory()->count(100)->create();
-        Question::factory()->count(200)->create();
+        // User::factory()->count(10)->create();
+        // Track::factory()->count(10)->create();
+        // Course::factory()->count(50)->create();
+        // Video::factory()->count(50)->create();
+        // Photo::factory()->count(50)->create();
+        // Quiz::factory()->count(100)->create();
+        // Question::factory()->count(200)->create();
         Admin::create([
             'name'=>'admin',
             'email'=>'adminadmin@gmail.com',

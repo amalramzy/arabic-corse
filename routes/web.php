@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function () {
     Route::resource('/users', 'App\Http\Controllers\User\UserController');
     //tracks
     Route::resource('/tracks', 'App\Http\Controllers\Admin\TrackController');
+    Route::resource('/tracks.courses', 'App\Http\Controllers\Admin\TrackCourseController');
+
     //courses
     Route::resource('/courses', 'App\Http\Controllers\Admin\CourseController');
     Route::get('/course-index/{id}', [\App\Http\Controllers\Admin\CourseController::class,'indexCourse'])->name('index.courses');
@@ -39,7 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function () {
     Route::get('/course-create/{id}', [\App\Http\Controllers\Admin\CourseController::class,'createCourse'])->name('create.courses');
     Route::get('/course-edit/{id}/{track_id}', [\App\Http\Controllers\Admin\CourseController::class,'editCourse'])->name('edit.courses');
     Route::put('/course-update/{id}/{track_id}', [\App\Http\Controllers\Admin\CourseController::class,'updateCourse'])->name('update.courses');
-    Route::resource('/course.video', 'App\Http\Controllers\Admin\CourseVideoController');
+    Route::resource('/courses.videos', 'App\Http\Controllers\Admin\CourseVideoController');
     //videos
     Route::resource('/videos', 'App\Http\Controllers\Admin\VideoController');
     //quizzes

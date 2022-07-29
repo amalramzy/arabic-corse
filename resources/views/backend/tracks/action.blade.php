@@ -18,7 +18,8 @@
             ">Delete</a>
        
         <a class="dropdown-item" href="{{route('tracks.edit',[$id])}}">Edit</a>
-        <a class="dropdown-item " href="{{route('index.courses',[$id])}}">Courses</a>
+        {{-- <a class="dropdown-item " href="{{route('index.courses',[$id])}}">Courses</a> --}}
+        <a class="dropdown-item" href="{{route('tracks.show',[$id])}}">Show</a>
 
         {{-- <a class="dropdown-item " href="{{url('admin/admins/upload',[$id])}}">Upload Image</a> --}}
     </div>

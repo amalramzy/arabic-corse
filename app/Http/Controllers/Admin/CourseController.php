@@ -23,7 +23,7 @@ class CourseController extends Controller
         return view('backend.courses.createCourse');
     }
 
-    public function store(CourseRequest $request)
+    public function store(CourseRequest $request ,Track $track)
     {
         $course = new Course($request->all());
         $course->save();
@@ -32,7 +32,7 @@ class CourseController extends Controller
             $course->addMedia($request->file('image'))->toMediaCollection('image');
         }
 
-        return redirect(route('courses.index'))->with('message', 'Course has been Created Succesfuly');
+        return redirect(url('/admin/tracks/',$track->id))->with('message', 'Course has been Created Succesfuly');
     }
 
     //courses Track

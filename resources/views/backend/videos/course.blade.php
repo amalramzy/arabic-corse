@@ -1,1 +1,1 @@
-<a href="#">{{\Str::limit($video->course->title, 20)}}</a>
+<a href="{{route('courses.show',[$video->course->id])}}">{{\Str::limit($video->course->title, 20)}}</a>
