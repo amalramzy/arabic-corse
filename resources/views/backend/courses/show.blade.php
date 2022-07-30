@@ -9,7 +9,7 @@
     <h3 class="card-title">Course name: {{\Str::limit($course->title,20)}}</h3>
 
     </div>
-            <div class="row">
+    <div class="row">
                 <div class="col-sm-4">
                     
                     <div class="card" style="width: 20rem;">
@@ -48,7 +48,9 @@
                 </div>
                
              
-            </div>
+    </div>
+        <!--add video-->
+        
             <hr>
             <h3>courses videos</h3>
             <div>
@@ -57,38 +59,78 @@
                     <span class="btn-inner--text">Add Video</span>
                 </a>
             </div>
-         <div class="row">
-           
-            @foreach($course->videos as $key => $video)
             
-            <div class="col-sm-4">
-                
-                <img src="{{asset('images\video.jpg')}}">
-                {{-- <iframe class="embed-responsive-item" src="{{$video->link}}?rel=0" allowfullscreen></iframe> --}}
-                
+            {{-- <iframe class="embed-responsive-item" src="{{$video->link}}?rel=0" allowfullscreen></iframe> --}}
+            
+        
+             
+    <div class="row">
                
-            </div>
-            <div class="col-sm-8">
-                <a href="{{route('videos.show', $video)}}"><h5>{{$video->title}}</h5></a>
-                <form id="delete-form{{$video->id}}" method="POST" action="{{route('videos.destroy',[$video->id])}}" >@csrf
-                    {{method_field('DELETE')}}
-                   </form> 
-                    <a href="#" onclick="if(confirm('Do you want to delete?')){
-                        event.preventDefault();
-                        document.getElementById('delete-form{{$video->id}}').submit()
-                    }else{
-                        event.preventDefault();
-                    }
-                    ">
-                    <input type="submit" value="Delete" class="btn btn-danger">
-                </a>
-                <a href="{{route('videos.edit',[$video->id])}}">
-                    <button class="btn btn-primary">Edit</button>
-                </a>
+                @foreach($course->videos as $key => $video)
+                <div class="col-sm-4">
+                    
+                    <img src="{{asset('images\video.jpg')}}">
+                </div>
+                <div class="col-sm-8">
+                    <a href="{{route('videos.show', $video)}}"><h5>{{$video->title}}</h5></a>
+                    <form id="delete-form{{$video->id}}" method="POST" action="{{route('videos.destroy',[$video->id])}}" >@csrf
+                        {{method_field('DELETE')}}
+                    </form> 
+                        <a href="#" onclick="if(confirm('Do you want to delete?')){
+                            event.preventDefault();
+                            document.getElementById('delete-form{{$video->id}}').submit()
+                        }else{
+                            event.preventDefault();
+                        }
+                        ">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </a>
+                    <a href="{{route('videos.edit',[$video->id])}}">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
+                    
+                </div>
+                @endforeach
+    </div>
+    <hr>
+    <h3>courses Quizzes</h3>
+    <div>
+        <a class="btn btn-icon btn-primary btn-create" href="/admin/courses/{{$course->id}}/quizzes/create">
+            <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+            <span class="btn-inner--text">Add Quiz</span>
+        </a>
+    </div>
+    <div class="row">
+                <!--add quiz-->
+                @foreach($course->quizzes as $key => $quiz)
+                <div class="col-sm-4">
+                    
+                    <img src="{{asset('images\quiz.png')}}">
+                </div>
+                <div class="col-sm-8">
 
-            </div>
-            @endforeach
-         </div>
+                    <a href="{{route('quizzes.show', $quiz)}}"><h5>{{$quiz->name}}</h5></a>
+                    <form id="delete-form{{$quiz->id}}" method="POST" action="{{route('quizzes.destroy',[$quiz->id])}}" >@csrf
+                        {{method_field('DELETE')}}
+                    </form> 
+                        <a href="#" onclick="if(confirm('Do you want to delete?')){
+                            event.preventDefault();
+                            document.getElementById('delete-form{{$quiz->id}}').submit()
+                        }else{
+                            event.preventDefault();
+                        }
+                        ">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </a>
+                    <a href="{{route('quizzes.edit',[$quiz->id])}}">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
+                    
+                </div>
+                @endforeach
+    </div>
+       
+
 
 
 @endsection

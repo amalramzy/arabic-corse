@@ -91,7 +91,14 @@
                     <a href="{{route('quizzes.index')}}"
                         class="{{ Route::currentRouteName()=='quizzes.index' ? 'open' : '' }}">
                         <i class="nav-icon i-Administrator"></i>
-                        <span class="item-name">All quizzes</span>
+                        <span class="item-name">All Quizzes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('questions.index')}}"
+                        class="{{ Route::currentRouteName()=='questions.index' ? 'open' : '' }}">
+                        <i class="nav-icon i-Administrator"></i>
+                        <span class="item-name">All Questions</span>
                     </a>
                 </li>
                 <li class="nav-item" >

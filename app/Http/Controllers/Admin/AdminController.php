@@ -9,6 +9,10 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreateAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use App\Models\Track;
+use App\Models\Course;
+use App\Models\Quiz;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -117,7 +121,11 @@ class AdminController extends Controller
 
     public function adminDashboard()
     {
-        return view('dashboard.dashboardv1');
+        $tracks_count = Track::all()->count();
+        $courses_count = Course::all()->count();
+        $quizzes_count = Quiz::all()->count();
+        $users_count = User::all()->count();
+        return view('dashboard.dashboardv1',compact('tracks_count','courses_count','quizzes_count','users_count'));
     }
 
 }

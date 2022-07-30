@@ -1,0 +1,1 @@
+<a href="#">{{$question->quiz->name}}</a>

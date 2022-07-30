@@ -6,10 +6,16 @@
 
 @section('main-content')
    <div class="breadcrumb">
-              
+    <div class="text-left p-3">
+      <div class="col-12">Quiz Name: {{$quiz->name}}</div>
+        <a class="btn btn-icon btn-primary btn-create" href="/admin/quizzes/{{$quiz->id}}/questions/create">
+        <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+        <span class="btn-inner--text">Add Question</span>
+      </a>
+  </div>   
     </div>
             <div class="row">
-                <div class="col-12">Quiz Name: {{$quiz->name}}</div>
+                
                 @foreach($quiz->questions as $key => $question)
                     
                 

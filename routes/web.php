@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Track;
+use App\Models\Course;
+use App\Models\Quiz;
+use App\Models\User;
 
  //home
 Route::view('/', 'welcome.index')->name('welcome');
@@ -19,9 +22,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function () {
 
     //dashboard
     Route::get('/dashboard', function () {
+        $tracks_count = Track::all()->count();
+        $courses_count = Course::all()->count();
+        $quizzes_count = Quiz::all()->count();
+        $users_count = User::all()->count();
         // set layout sesion(key)
         session(['layout' => 'compact']);
-        return view('admin-dashboard.dashboardv1');
+        return view('admin-dashboard.dashboardv1', compact('tracks_count','courses_count','quizzes_count','users_count'));
     })->name('dashboard');
     //crud admin
     Route::resource('/admins', 'App\Http\Controllers\Admin\AdminController');
@@ -42,10 +49,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function () {
     Route::get('/course-edit/{id}/{track_id}', [\App\Http\Controllers\Admin\CourseController::class,'editCourse'])->name('edit.courses');
     Route::put('/course-update/{id}/{track_id}', [\App\Http\Controllers\Admin\CourseController::class,'updateCourse'])->name('update.courses');
     Route::resource('/courses.videos', 'App\Http\Controllers\Admin\CourseVideoController');
+    Route::resource('/courses.quizzes', 'App\Http\Controllers\Admin\CourseQuizController');
+
     //videos
     Route::resource('/videos', 'App\Http\Controllers\Admin\VideoController');
     //quizzes
     Route::resource('/quizzes', 'App\Http\Controllers\Admin\QuizController');
+    Route::resource('/quizzes.questions', 'App\Http\Controllers\Admin\QuizQuestionController');
+
     //questions
     Route::resource('/questions', 'App\Http\Controllers\Admin\QuestionController');
 

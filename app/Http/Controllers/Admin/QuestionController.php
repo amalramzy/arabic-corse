@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Question;
+use App\DataTables\QuestionsDataTable;
 class QuestionController extends Controller
 {
     /**
@@ -12,9 +13,9 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(QuestionsDataTable $dataTable)
     {
-        //
+        return $dataTable->render('backend.questions.index'); 
     }
 
     /**
@@ -24,7 +25,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.questions.create');
     }
 
     /**
@@ -35,7 +36,9 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $question=new Question($request->all());
+        $question->save();
+        return redirect(route('questions.index'))->with('message', 'Question has been Created Succesfuly');
     }
 
     /**
@@ -44,9 +47,9 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Question $question)
     {
-        //
+        return view('backend.questions.show', compact('question'));
     }
 
     /**
@@ -57,7 +60,8 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Question::findOrFail($id);
+        return view('backend.questions.edit',compact(['question']));
     }
 
     /**
@@ -69,7 +73,10 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = Question::findOrFail($id);
+        $question->update($request->all());
+       
+        return redirect(route('questions.index'))->with('message', 'Question has been Updated Succesfuly');
     }
 
     /**
@@ -80,6 +87,7 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Question::findOrFail($id)->delete();
+        return redirect()->route('questions.index')->with('message', 'Question has been Deleted Succesfuly');
     }
 }
