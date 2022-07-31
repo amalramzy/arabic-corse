@@ -7,18 +7,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-class User extends Authenticatable
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+class User extends Authenticatable implements HasMedia 
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasFactory,InteractsWithMedia, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $appends = ['avatar'];
     protected $fillable = [
         'name', 'email', 'password','score'
     ];
+
+    public function getAvatarAttribute(){
+        $url = $this->getFirstMediaUrl('avatar');
+        return $url == "" ? null : $url;
+    }
 
     public function photo(){
         return $this->morphOne('App\Models\Photo', 'photoable');

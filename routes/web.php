@@ -37,6 +37,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function () {
     Route::post('/admins/upload/{id}', [App\Http\Controllers\Admin\AdminController::class, 'UploadImage'])->name('admins.upload');
     //crud user
     Route::resource('/users', 'App\Http\Controllers\User\UserController');
+    //upload avatar
+    Route::get('/users/upload/{id}', [App\Http\Controllers\User\UserController::class, 'upload']);
+    Route::post('/users/upload/{id}', [App\Http\Controllers\User\UserController::class, 'UploadAvatar'])->name('users.upload');
     //tracks
     Route::resource('/tracks', 'App\Http\Controllers\Admin\TrackController');
     Route::resource('/tracks.courses', 'App\Http\Controllers\Admin\TrackCourseController');

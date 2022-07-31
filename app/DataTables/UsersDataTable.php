@@ -21,7 +21,10 @@ class UsersDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'user.view');
+            ->addColumn('action', 'user.view')
+            ->addColumn('avatar', function($user){
+                return view('user.avatar', compact('user'));
+                });
     }
 
     /**
@@ -68,6 +71,7 @@ class UsersDataTable extends DataTable
             Column::make('id'),
             Column::make('name'),
             Column::make('email'),
+            Column::computed('avatar'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

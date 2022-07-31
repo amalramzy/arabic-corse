@@ -19,5 +19,7 @@
        
         <a class="dropdown-item" href="{{route('users.edit',[$id])}}">Edit</a>
         <a class="dropdown-item " href="{{url('admin/user/batch',[$id])}}">Assign Batch</a>
+        <a class="dropdown-item " href="{{url('admin/users/upload',[$id])}}">Upload Avatar</a>
+
     </div>
 </div>

@@ -119,4 +119,21 @@ class UserController extends Controller
     public function exportUsers(Request $request){
         return Excel::download(new ExportUser, 'users.xlsx');
     }
+
+    public function upload($id)
+    {
+        $user = User::findOrFail($id);
+        return view('user.upload',compact(['user']));
+    }
+
+    public function UploadAvatar(Request $request,$id)
+    {
+        $user = User::findOrFail($id);
+          if ($request->hasFile('avatar')){
+            $user->clearMediaCollection('avatar');
+            $user->addMedia($request->file('avatar'))->toMediaCollection('avatar');
+        }
+        return redirect(route('users.index'))->with('message', 'upload avatar Succesfuly');
+    }
+
 }

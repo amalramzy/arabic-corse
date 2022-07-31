@@ -48,7 +48,7 @@
                 <li class="nav-item ">
                     <a class="{{ Route::currentRouteName()=='dashboard' ? 'open' : '' }}"
                         href="{{route('dashboard')}}">
-                        <i class="nav-icon i-Clock-3"></i>
+                        <i class="nav-icon i-Bar-Chart"></i>
                         <span class="item-name">Dashboard</span>
                     </a>
                 </li>
@@ -62,49 +62,49 @@
                 <li class="nav-item">
                     <a href="{{route('users.index')}}"
                         class="{{ Route::currentRouteName()=='users.index' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
+                        <i class="nav-icon i-Business-Mens"></i>
                         <span class="item-name">All Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('tracks.index')}}"
                         class="{{ Route::currentRouteName()=='tracks.index' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
+                        <i class="nav-icon i-Tag-2"></i>
                         <span class="item-name">All Tracks</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('courses.index')}}"
                         class="{{ Route::currentRouteName()=='courses.index' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
+                        <i class="nav-icon i-Over-Time"></i>
                         <span class="item-name">All Courses</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('videos.index')}}"
                         class="{{ Route::currentRouteName()=='videos.index' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
+                        <i class="nav-icon i-Video-Photographer"></i>
                         <span class="item-name">All Videos</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('quizzes.index')}}"
                         class="{{ Route::currentRouteName()=='quizzes.index' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
+                        <i class="nav-icon i-Gear-2"></i>
                         <span class="item-name">All Quizzes</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('questions.index')}}"
                         class="{{ Route::currentRouteName()=='questions.index' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
+                        <i class="nav-icon i-Pen-2 font-weight-bold"></i>
                         <span class="item-name">All Questions</span>
                     </a>
                 </li>
                 <li class="nav-item" >
                        <a href="{{route('import-view')}}"
                         class="{{ Route::currentRouteName()=='import-view' ? 'open' : '' }}">
-                        <i class="nav-icon i-Administrator"></i>
+                        <i class="nav-icon i-Receipt-4"></i>
                         <span class="item-name">Import</span>
                     </a>
                 </li>
