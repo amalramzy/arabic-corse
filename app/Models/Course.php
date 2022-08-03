@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use App\Models\User;
 class Course extends Model implements HasMedia
 {
     use HasFactory,InteractsWithMedia;
@@ -28,7 +29,7 @@ class Course extends Model implements HasMedia
     }
 
     public function users(){
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany(User::class);
     }
 
     public function quizzes(){

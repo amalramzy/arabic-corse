@@ -109,9 +109,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('picture')
+        <main class="py-0">
+            
             @yield('content')
+            @include('includes.footer')
         </main>
     </div>
 </body>

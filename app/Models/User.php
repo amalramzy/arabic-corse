@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use App\Models\Course;
+use App\Models\Track;
 class User extends Authenticatable implements HasMedia 
 {
     use HasFactory,InteractsWithMedia, Notifiable, HasApiTokens;
@@ -33,11 +35,11 @@ class User extends Authenticatable implements HasMedia
     }
 
     public function tracks(){
-        return $this->belongsToMany('App\Models\Track');
+        return $this->belongsToMany(Track::class);
     }
 
     public function courses(){
-        return $this->belongsToMany('App\Models\Coures');
+        return $this->belongsToMany(Course::class);
     }
 
     public function quizzes(){

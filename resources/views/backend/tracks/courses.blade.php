@@ -1,0 +1,1 @@
+<a href="#">{{count($track->courses)}}</a>

@@ -1,9 +1,7 @@
 @extends('layouts.app')
-@section('picture')
-@include('includes.picture')
-@endsection
+
 @section('content')
-
-
-
+@include('includes.picture')
+@include('includes.mycourses')
+@include('includes.trackfamous')
 @endsection

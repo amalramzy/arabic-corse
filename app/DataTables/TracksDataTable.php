@@ -21,7 +21,10 @@ class TracksDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'backend.tracks.action');
+            ->addColumn('action', 'backend.tracks.action')
+            ->addColumn('no courses', function($track){
+                return view('backend.tracks.courses', compact('track'));
+                });
     }
 
     /**
@@ -68,6 +71,7 @@ class TracksDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('name'),
+            Column::computed('no courses'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)
