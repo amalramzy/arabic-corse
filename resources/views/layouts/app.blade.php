@@ -26,6 +26,7 @@
     <script src="{{asset('assets/js/common-bundle-script.js')}}"></script>
 
     <script src="{{asset('assets/js/script.js')}}"></script>
+    <script src="{{asset('js/script.js')}}"></script>
      
 
 </head>
@@ -73,7 +74,7 @@
                           <a class="nav-link" href="#">Tracks</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Courses</a>
+                          <a class="nav-link" href="/course/{slug}">Courses</a>
                         </li>
                        
                       </ul>

@@ -13,11 +13,21 @@ class Course extends Model implements HasMedia
     protected $appends = ['image'];
     protected $fillable = [
         'title',
+        'description',
         'status',
         'link',
-        'track_id'
+        'track_id',
+        'slug'
+        
         
     ];
+     //without save in database
+    // public function getSlugAttribute(){
+    //     $slugName = strtolower(str_replace(' ', '-', $this->title));
+    //     $slug  = $this->$slugName;
+    //     return $slug;
+    // }
+
 
     public function getImageAttribute(){
         $url = $this->getFirstMediaUrl('image');

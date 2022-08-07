@@ -26,6 +26,10 @@ class CourseController extends Controller
     public function store(CourseRequest $request ,Track $track)
     {
         $course = new Course($request->all());
+        $title = $request->title;
+        $slug = strtolower(str_replace(' ', '-', $title));
+        $course->slug = $slug;
+
         $course->save();
         
         if ($request->hasFile('image')){

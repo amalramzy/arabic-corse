@@ -27,7 +27,9 @@ class AllCoursesDataTable extends DataTable
                 })
             ->addColumn('link', function($course){
                 return view('backend.courses.link', compact('course'));
-                }); 
+                });
+           
+       
     }
 
     /**

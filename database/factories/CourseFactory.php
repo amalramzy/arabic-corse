@@ -14,8 +14,11 @@ class CourseFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->paragraph();
         return [
-            'title' => $this->faker->paragraph(),
+            'title' => $title,
+            'description' => $this->faker->paragraph(),
+            'slug' => strtolower(str_replace(' ', '-', $title)),
             'status' => $this->faker->randomElement([0, 1]),
             'link' => $this->faker->url(),
             'track_id'=> Track::all()->random()->id,

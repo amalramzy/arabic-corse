@@ -57,6 +57,18 @@
                                     </span>
                                     @enderror
                                 </div>
+                                <div class="form-group col-6">
+                                    <label class="form-control-label" for="type">{{ __('Type') }}</label>
+                                    <select class="form-control form-control-alternative @error('type') is-invalid @enderror" aria-label="Default select example" name="type">
+                                        <option value="text">Text</option>
+                                        <option value="checkbox">Checkbox</option>
+                                      </select>                                    
+                                    @error('type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                               
                                 <div class="form-group col-6">
                                     <label class="form-control-label" for="input-parent_id">{{ __('Quiz') }}</label>

@@ -13,11 +13,11 @@
             <div class="col-sm-3">
                 <div class="courses">
                     @if($course->image)
-					<a href=""><img src="{{ $course->image}}"></a>
+					<a href="{{url('auth/course',[$course->slug])}}"><img src="{{ $course->image}}"></a>
 					@else
-					<a href=""><img src="/images/courses.jpg"></a>
+					<a href="{{url('auth/course',[$course->slug])}}"><img src="/images/courses.jpg"></a>
 					@endif
-                    <h5><a href="#">{{$course->title}}</a></h5>
+                    <h5><a href="{{url('auth/course',[$course->slug])}}">{{$course->title}}</a></h5>
                     <span style="margin-left: 10px; font-weight: 500;" class="{{ $course->status == '0' ? 'text-success' : 'text-danger' }}">{{ $course->status == '0' ? 'FREE' : 'PAID' }}</span>
 					<span style="margin-left: 50%">{{ count($course->users) }} users</span>
                 </div>
@@ -57,15 +57,15 @@
                                     <div class="col-sm-2">
                                         <div class="course-image">
                                             @if($course->image)
-                                            <img src="{{ $course->image }}">
+                                            <a href="{{url('auth/course',[$course->slug])}}"><img src="{{ $course->image }}"></a>
                                             @else
-                                            <img src="/images/courses.jpg">
+                                            <a href="{{url('auth/course',[$course->slug])}}"><img src="/images/courses.jpg"></a>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-sm">
                                         <div class="course-details">
-                                            <h5><a href="#">{{$course->title}}</a></h5>
+                                            <h5><a href="{{url('auth/course',[$course->slug])}}">{{$course->title}}</a></h5>
                                             <span style="margin-left: 10px; font-weight: 500;" class="{{ $course->status == '0' ? 'text-success' : 'text-danger' }}">{{ $course->status == '0' ? 'FREE' : 'PAID' }}</span>
                                             <span style="margin-left: 15%">{{ count($course->users) }} users</span>
                                         </div>

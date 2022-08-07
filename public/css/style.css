@@ -287,3 +287,12 @@ footer div.footer-copyright a {
 	color: #fff;
 	text-decoration: none;
 }
+
+/*question*/
+.quiz-container{
+	margin-top: 50px;
+}
+.quiz-container .quiz-questions{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}

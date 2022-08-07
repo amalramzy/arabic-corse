@@ -43,7 +43,7 @@ class User extends Authenticatable implements HasMedia
     }
 
     public function quizzes(){
-        return $this->belongsToMany('App\Models\Quiz');
+        return $this->belongsToMany(Quiz::class);
     }
 
     /**
