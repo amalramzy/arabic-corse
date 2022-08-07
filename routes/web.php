@@ -72,11 +72,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function () {
 
 Route::group(['prefix' => 'auth', 'middleware' => ['auth']],function () {
     //home
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/course/{slug}', [App\Http\Controllers\CourseController::class, 'index'])->name('course.name');
     Route::get('/course/quizzes/{slug}/{name}', [App\Http\Controllers\QuizController::class, 'index'])->name('quiz.name');
     Route::post('/course/quizzes/{slug}/{name}', [App\Http\Controllers\QuizController::class, 'submit'])->name('quiz.submit');
-    Route::get('/search', [App\Http\Controllers\SearchController::class, 'index']);
+    Route::get('/track/{name}', [App\Http\Controllers\TrackController::class, 'index']);
+
 
 
 
@@ -84,6 +84,8 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']],function () {
 });
 
 Auth::routes();
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

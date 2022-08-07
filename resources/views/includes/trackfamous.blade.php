@@ -34,7 +34,7 @@
                         <ul class="list-unstyled">
                         @foreach($famous_tracks as $famous_track)
 
-                        <li><a class="btn btn-light" href="#">{{ $famous_track->name }}</a></li>
+                        <li><a class="btn btn-light" href="{{url('/auth/track',[$famous_track->name])}}">{{ $famous_track->name }}</a></li>
 
                         @endforeach
                         </ul>
@@ -44,7 +44,7 @@
             @endif
 
             @if($i == 2) 
-
+                 @auth
                 <div class="recommended-courses">
                     
                     <h2>Recommended courses for you </h2>
@@ -78,7 +78,7 @@
                     {{-- </div> --}}
 
                 </div>
-
+               @endauth
 		    @endif
            
             

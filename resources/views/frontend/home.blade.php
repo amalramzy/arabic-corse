@@ -2,6 +2,9 @@
 
 @section('content')
 @include('includes.picture')
-@include('includes.mycourses')
+@auth
+    @include('includes.mycourses')
+@endauth
+
 @include('includes.trackfamous')
 @endsection
