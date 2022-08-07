@@ -63,9 +63,11 @@
                    @else
                   
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <form class="form-inline my-2 my-lg-0 search-form">
-                            <input placeholder="find your course..." class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+                        <form action="/auth/search" method="GET" class="form-inline my-2 my-lg-0 search-form">
+                            <input name="q" placeholder="find your course..." class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         </form>
+
                       <ul class="navbar-nav">
                         <li class="nav-item active">
                           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>

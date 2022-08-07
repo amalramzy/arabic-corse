@@ -76,6 +76,8 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']],function () {
     Route::get('/course/{slug}', [App\Http\Controllers\CourseController::class, 'index'])->name('course.name');
     Route::get('/course/quizzes/{slug}/{name}', [App\Http\Controllers\QuizController::class, 'index'])->name('quiz.name');
     Route::post('/course/quizzes/{slug}/{name}', [App\Http\Controllers\QuizController::class, 'submit'])->name('quiz.submit');
+    Route::get('/search', [App\Http\Controllers\SearchController::class, 'index']);
+
 
 
 
