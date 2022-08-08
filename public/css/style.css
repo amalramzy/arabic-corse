@@ -6,6 +6,7 @@
 
 
 body {
+	background-color:#e2e8f0 ;
 	padding-top: 0px;
 }
 
@@ -242,7 +243,12 @@ color: #fff;
 }
 
 /* Footer */
-
+span.logo {
+	background-color: #fff;
+	color: #1c5996;
+	padding: 8px;
+	border-radius: 10px 20px;
+}
 
 footer {
 	background-color: #1a4e82;
@@ -295,4 +301,53 @@ footer div.footer-copyright a {
 .quiz-container .quiz-questions{
 	margin-top: 50px;
 	margin-bottom: 50px;
+}
+/*profile*/
+/* body {
+    background: rgb(99, 39, 120)
+} */
+.profile{
+	background: #1c5996;
+
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: #1c5996
+}
+
+.profile-button {
+/* Main Color: #1c5996; */
+    background: #1c5996;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #1c5996
+}
+
+.profile-button:focus {
+    background: #1c5996;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #1c5996;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #1c5996;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #964b1c;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #1c5996
 }

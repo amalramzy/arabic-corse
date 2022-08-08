@@ -11,8 +11,7 @@ use App\Models\User;
 Route::get('/',function(){
     $tracks = Track::all();
     $famous_tracks_ids = Course::pluck('track_id')->countBy()->sort()->reverse()->keys()->take(10);
-
-		$famous_tracks = Track::withCount('courses')->whereIn('id', $famous_tracks_ids)->orderBy('courses_count', 'desc')->get();
+	$famous_tracks = Track::withCount('courses')->whereIn('id', $famous_tracks_ids)->orderBy('courses_count', 'desc')->get();
     return view('welcome.index',compact('tracks','famous_tracks'));
 })->name('welcome');
 
@@ -84,12 +83,18 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']],function () {
     Route::get('/course/{slug}', [App\Http\Controllers\CourseController::class, 'index'])->name('course.name');
     Route::post('/course/{slug}', [App\Http\Controllers\CourseController::class, 'enroll']);
     Route::get('/myCourses', [App\Http\Controllers\CourseController::class, 'myCourses']);
+    Route::get('/allCourses', [App\Http\Controllers\CourseController::class, 'allCourses']);
 
     Route::get('/course/quizzes/{slug}/{name}', [App\Http\Controllers\QuizController::class, 'index'])->name('quiz.name');
     Route::post('/course/quizzes/{slug}/{name}', [App\Http\Controllers\QuizController::class, 'submit'])->name('quiz.submit');
     Route::get('/track/{name}', [App\Http\Controllers\TrackController::class, 'index']);
-
-
+    //profile
+    Route::get('/myProfile', [App\Http\Controllers\ProfileController::class, 'myprofile']);
+    Route::post('/myProfile', [App\Http\Controllers\ProfileController::class, 'UploadAvatar'])->name('upload.avatar');
+    Route::post('/update-profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('update.profile');
+    //contact us
+    Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'index']);
+    Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'contactUs']);
 
 
 

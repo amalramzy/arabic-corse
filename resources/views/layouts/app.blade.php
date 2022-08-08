@@ -51,11 +51,11 @@
                      
                        @if (Route::has('register'))
                          
-                            <button class="btn btn-light " type="button" >
+                            {{-- <button class="btn btn-light " type="button" >
 
                                <a style="color: black"  href="{{ route('register') }}">{{ __('Register') }}</a>
 
-                            </button>
+                            </button> --}}
                   
                        @endif
                        </div>
@@ -72,13 +72,12 @@
                         <li class="nav-item active">
                           <a class="nav-link" href="/auth/home">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="/tracks">Tracks</a>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/auth/allCourses">Courses <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="/courses">Courses</a>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/auth/contact-us">Contact Us<span class="sr-only">(current)</span></a>
                         </li>
-                       
                       </ul>
                     </div>
                 
@@ -100,7 +99,7 @@
                                 
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#"> {{ __('My Profile') }}</a>
+                                <a class="dropdown-item" href="/auth/myProfile"> {{ __('My Profile') }}</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="/auth/myCourses"> {{ __('My Courses') }}</a>

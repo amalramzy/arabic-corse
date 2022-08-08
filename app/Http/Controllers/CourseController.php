@@ -23,10 +23,16 @@ class CourseController extends Controller
     public function enroll($slug){
         $course = Course::where('slug', $slug)->first();
         $user = auth()->user();
-
-
+        $track = $course->track;
+        $user->tracks()->attach([$track->id]);
         $user->courses()->attach([$course->id]);
         return redirect('/auth/course/'. $slug . '')->with('message', "You've Enrolled in ". $course->title);
 
     }
+
+    public function allCourses(){
+      $courses = Course::paginate(16);
+
+    return view('frontend.allCourses',compact('courses')); 
+}
 }

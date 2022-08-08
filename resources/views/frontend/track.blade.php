@@ -28,7 +28,15 @@
               <a href=""><p class="card-text">TRACK NAME: {{$course->track->name}}</p></a>
               <h4 class="{{$course->status == '0' ? 'text-primary': 'text-danger'}}">STATUS: {{$course->status == "0" ? "FREE": "PAID"}}</h4>
               <h5>{{count($course->users)}} users are learning this course.</h5>
-
+              <span>users enrolled</span>
+              @if(count(auth()->user()->courses()->where('slug',$course->slug)->get()) > 0)
+               <div class="alert alert-success">Already Enrolled</div>
+              @else
+              <form method="POST" action="{{url('auth/course',$course->slug)}}">
+                @csrf
+                <input type="submit" value="Enroll" name="enroll" class="btn btn-light">
+              </form>
+              @endif
             </div>
             <hr>
       </div>
