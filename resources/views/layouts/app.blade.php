@@ -70,13 +70,13 @@
 
                       <ul class="navbar-nav">
                         <li class="nav-item active">
-                          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="/auth/home">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Tracks</a>
+                          <a class="nav-link" href="/tracks">Tracks</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="/course/{slug}">Courses</a>
+                          <a class="nav-link" href="/courses">Courses</a>
                         </li>
                        
                       </ul>
@@ -103,7 +103,7 @@
                                 <a class="dropdown-item" href="#"> {{ __('My Profile') }}</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#"> {{ __('My Courses') }}</a>
+                                <a class="dropdown-item" href="/auth/myCourses"> {{ __('My Courses') }}</a>
                             </li>
                         </ul>  
                    </div> 

@@ -8,10 +8,16 @@ use App\Models\Quiz;
 use App\Models\User;
 
  //home
-Route::view('/', 'welcome.index')->name('welcome');
+Route::get('/',function(){
+    $tracks = Track::all();
+    $famous_tracks_ids = Course::pluck('track_id')->countBy()->sort()->reverse()->keys()->take(10);
+
+		$famous_tracks = Track::withCount('courses')->whereIn('id', $famous_tracks_ids)->orderBy('courses_count', 'desc')->get();
+    return view('welcome.index',compact('tracks','famous_tracks'));
+})->name('welcome');
 
 Route::group(['prefix' => '/', 'middleware' => ['guest']],function () {
-
+   
     //login admin
     Route::get('admin/login', [App\Http\Controllers\Admin\AdminLoginController::class, 'indexLogin'])->name('login.index');
     Route::post('admin/login/submit', [App\Http\Controllers\Admin\AdminLoginController::class, 'loginAdmin'])->name('admin.login');
@@ -71,8 +77,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function () {
 });
 
 Route::group(['prefix' => 'auth', 'middleware' => ['auth']],function () {
+    Route::get('search', [App\Http\Controllers\SearchController::class, 'index']);
     //home
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //courses
     Route::get('/course/{slug}', [App\Http\Controllers\CourseController::class, 'index'])->name('course.name');
+    Route::post('/course/{slug}', [App\Http\Controllers\CourseController::class, 'enroll']);
+    Route::get('/myCourses', [App\Http\Controllers\CourseController::class, 'myCourses']);
+
     Route::get('/course/quizzes/{slug}/{name}', [App\Http\Controllers\QuizController::class, 'index'])->name('quiz.name');
     Route::post('/course/quizzes/{slug}/{name}', [App\Http\Controllers\QuizController::class, 'submit'])->name('quiz.submit');
     Route::get('/track/{name}', [App\Http\Controllers\TrackController::class, 'index']);
@@ -84,7 +96,6 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']],function () {
 });
 
 Auth::routes();
-Route::get('/search', [App\Http\Controllers\SearchController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

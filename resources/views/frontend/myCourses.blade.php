@@ -2,12 +2,11 @@
 
 @section('content')
 <div class="container">
+    @foreach($user_courses as $key => $course)
+        
+    
     <h2 class="p-3">Course name: {{$course->title}}</h2>
-    @if (Session::has('message'))
-    <div class="alert alert-success">
-        {{Session::get('message')}}
-    </div>
- @endif
+  
     <div class="row">
         <div class="col-sm-4">
             
@@ -28,24 +27,13 @@
                 <p class="card-text">TRACK NAME: {{$course->track->name}}</p>
                 <h4 class="{{$course->status == '0' ? 'text-primary': 'text-danger'}}">STATUS: {{$course->status == "0" ? "FREE": "PAID"}}</h4>
                 <h5>{{count($course->users)}} users are learning this course.</h5>
-                <span>users enrolled</span>
-                @if(count(auth()->user()->courses()->where('slug',$course->slug)->get()) > 0)
-                 <div class="alert alert-success">Already Enrolled</div>
-                @else
-                <form method="POST" action="{{url('auth/course',$course->slug)}}">
-                  @csrf
-                  <input type="submit" value="Enroll" name="enroll" class="btn btn-light">
-                </form>
-                @endif
-               
+
               </div>
               <hr>
         </div>
-  
+       
      
     </div>
-    @if(count(auth()->user()->courses()->where('slug',$course->slug)->get()) > 0)
-
     <h2 class="p-3">All Videos</h2>
 
     <div class="row text-center videos">
@@ -79,26 +67,6 @@
         </div>
 
     </div>
-    @endif
+    @endforeach
 </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="show-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Video Preview</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <iframe width="460" height="250" src="" title="Twitter Bootstrap 3 Design 2 In Arabic #01 - Intro and Prepare Files and Libraries" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 @endsection
