@@ -8,10 +8,11 @@
         <title>Gull - laravel 8.x + Bootstrap 4 admin template</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('assets/styles/css/themes/lite-purple.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
     </head>
 
     <body>
-        <div class="auth-layout-wrap" style="background-image: url({{asset('assets/images/photo-wide-4.jpg')}})">
+        <div class="auth-layout-wrap" style="background-color:#e2e8f0;">
             <div class="auth-content">
                 <div class="card o-hidden">
                     <div class="row">
@@ -19,22 +20,26 @@
                             style="background-size: cover;background-image: url({{asset('assets/images/photo-long-3.jpg')}})">
                             <div class="pl-3 auth-right">
                                 <div class="auth-logo text-center mt-4">
-                                    <img src="{{asset('assets/images/logo.png')}}" alt="">
+                                    <a class="navbar-brand" href="{{ url('/home') }}">
+                                        <span class="logo">LC</span> Learncode
+                                      
+                                      </a>
+                                    {{-- <img src="{{asset('assets/images/logo.png')}}" alt=""> --}}
                                 </div>
                                 <div class="flex-grow-1"></div>
                                 <div class="w-100 mb-4">
-                                    <a class="btn btn-outline-primary btn-outline-email btn-block btn-icon-text btn-rounded"
+                                    {{-- <a class="btn btn-outline-primary btn-outline-email btn-block btn-icon-text btn-rounded"
                                         href="{{ route('login') }}">
                                         <i class=" i-Mail-with-At-Sign"></i> Sign in with Email
-                                    </a>
+                                    </a> --}}
                                     {{-- <a
                                         class="btn btn-outline-primary btn-outline-google btn-block btn-icon-text btn-rounded">
                                         <i class="i-Google-Plus"></i> Sign in with Google
-                                    </a>
-                                    <a
-                                        class="btn btn-outline-primary btn-outline-facebook btn-block btn-icon-text btn-rounded">
-                                        <i class="i-Facebook-2"></i> Sign in with Facebook
                                     </a> --}}
+                                    <a
+                                        class="btn btn-outline-primary btn-outline-facebook btn-block btn-icon-text btn-rounded" href="{{url('/login/{provider}')}}">
+                                        <i class="i-Facebook-2"></i> Sign in with Facebook
+                                    </a>
                                 </div>
                                 <div class="flex-grow-1"></div>
                             </div>
@@ -89,7 +94,7 @@
                                             class="form-control-rounded form-control" name="password_confirmation"
                                             required autocomplete="new-password">
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block btn-rounded mt-3">Sign
+                                    <button type="submit" class="btn btn-light btn-block btn-rounded mt-3">Sign
                                         Up</button>
                                 </form>
                             </div>

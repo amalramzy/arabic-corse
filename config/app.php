@@ -168,7 +168,6 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\ButtonsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
@@ -231,6 +230,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Datatables' => Yajra\DataTables\DataTablesServiceProvider::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class, 
+
     ],
 
 ];

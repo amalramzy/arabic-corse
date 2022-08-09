@@ -94,7 +94,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']],function () {
     Route::post('/update-profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('update.profile');
     //contact us
     Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'index']);
-    Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'contactUs']);
+    Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'sendEmail']);
 
 
 
@@ -102,7 +102,9 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']],function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//social
+Route::get('login/{provider}', [App\Http\Controllers\User\SocialiteController::class, 'redirectToProvider']);
+Route::get('login/{provider}/callback', [App\Http\Controllers\User\SocialiteController::class, 'handleProviderCallback']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

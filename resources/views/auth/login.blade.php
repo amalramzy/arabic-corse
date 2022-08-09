@@ -8,18 +8,22 @@
         <title>Gull - laravel 8.x + Bootstrap 4 admin template</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('assets/styles/css/themes/lite-purple.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
     </head>
 
     <body>
-        <div class="auth-layout-wrap" style="background-image: url({{asset('assets/images/photo-wide-4.jpg')}})">
+        <div class="auth-layout-wrap" style="background-color:#e2e8f0;">
             <div class="auth-content">
                 <div class="card o-hidden">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="p-4">
                                 <div class="auth-logo text-center mb-4">
-                                    <img src="{{asset('assets/images/logo.png')}}" alt="">
-                                </div>
+                                    <a class="navbar-brand" href="{{ url('/home') }}">
+                                        <span class="logo">LC</span> Learncode
+                                      
+                                      </a>                                </div>
                                 <h1 class="mb-3 text-18">Login User</h1>
                                 <form method="POST" action="{{route('login')}}">
                                     @csrf
@@ -47,7 +51,7 @@
                                         @enderror
                                     </div>
 
-                                    <button class="btn btn-rounded btn-primary btn-block mt-2">Sign In</button>
+                                    <button class="btn btn-rounded btn-light btn-block mt-2">Sign In</button>
 
                                 </form>
                                 @if (Route::has('password.request'))
